@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNET_API_proj.Services;
+using ASPNET_API_proj.Services.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,8 @@ namespace ASPNET_API_proj
         {
 
             services.AddControllers();
+            // Dependency Injection
+            services.AddScoped<IPersonService, PersonService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ASPNET_API_proj", Version = "v1" });
